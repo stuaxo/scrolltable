@@ -18,46 +18,46 @@
 
             // wrap the current table (will end up being just body table)
             var bodyWrap = table.wrap('<div></div>')
-                                    .parent()
-                                    .attr('id', tableId + '_body_wrap')
-                                    .css({
-                                        width: options.width,
-                                        height: options.height,
-                                        overflow: 'auto'
-                                    });
+                .parent()
+                .attr('id', tableId + '_body_wrap')
+                .css({
+                    width: options.width,
+                    height: options.height,
+                    overflow: 'auto'
+                });
 
             // wrap the body
             var tableWrap = bodyWrap.wrap('<div></div>')
-                                    .parent()
-                                    .attr('id', tableId + '_table_wrap')
-                                    .css({
-                                        overflow: 'hidden',
-                                        display: 'inline-block',
-                                        border: options.border
-                                    });
+                .parent()
+                .attr('id', tableId + '_table_wrap')
+                .css({
+                    overflow: 'hidden',
+                    display: 'inline-block',
+                    border: options.border
+                });
 
             // clone the header
             var headWrap = $(document.createElement('div'))
-                                    .attr('Id', tableId + '_head_wrap')
-                                    .prependTo(tableWrap)
-                                    .css({
-                                        height: table.find('thead').height() + 'px',
-                                        width: options.width,
-                                        overflow: 'hidden'
-                                    });
+                .attr('Id', tableId + '_head_wrap')
+                .prependTo(tableWrap)
+                .css({
+                    width: options.width,
+                    overflow: 'hidden'
+
+                });
 
             var headTable = table.clone(true)
-                                    .attr('Id', tableId + '_head')
-                                    .appendTo(headWrap)
-                                    .css({
-                                        'table-layout': 'fixed'
-                                    });
+                .attr('Id', tableId + '_head')
+                .appendTo(headWrap)
+                .css({
+                    'table-layout': 'fixed'
+                });
 
             var bufferCol = $(document.createElement('th'))
-                                    .css({
-                                        width: '100%'
-                                    })
-                                    .appendTo(headTable.find('thead tr'));
+                .css({
+                    width: '100%'
+                })
+                .appendTo(headTable.find('thead tr'));
 
             // remove the extra html
             headTable.find('tbody').remove();
@@ -81,4 +81,3 @@
     };
 
 })(jQuery);
-
