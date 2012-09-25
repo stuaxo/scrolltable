@@ -41,6 +41,7 @@
                                     .attr('Id', tableId + '_head_wrap')
                                     .prependTo(tableWrap)
                                     .css({
+                                        height: table.find('thead').height() + 'px',
                                         width: options.width,
                                         overflow: 'hidden'
                                     });
