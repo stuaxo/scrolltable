@@ -4,7 +4,7 @@
         var defaults = {
             width: '400px',
             height: '300px',
-            border: 'solid 1px #888'
+            border: 'none'
         };
         var options = $.extend(defaults, options);
 
@@ -54,26 +54,28 @@
                     'table-layout': 'fixed'
                 });
 
-            var bufferCol = $(document.createElement('th'))
-                .css({
-                    width: '100%'
-                })
-                .appendTo(headTable.find('thead tr'));
-
             // remove the extra html
             headTable.find('tbody').remove();
             table.find('thead').remove();
 
-            // size the header columns to match the body
-            var allBodyCols = table.find('tbody tr:first td');
-            headTable.find('thead tr th').each(function(index) {
-                var desiredWidth = getWidth($(allBodyCols[index]));
-                $(this).css({ width: desiredWidth + 'px' });
-            });
+            var sizeHeaders = function() {
+                // size the header columns to match the body
+                var allBodyCols = table.find('tbody tr:first td');
+                headTable.find('thead tr th').each(function(index) {
+                    var desiredWidth = getWidth($(allBodyCols[index]));
+                    $(this).css({ width: desiredWidth + 'px' });
+                });
+            }
+
+            sizeHeaders();
+
+            window.onresize = function() {
+                sizeHeaders();
+            };
         }
 
         function getWidth(td) {
-            if ($.browser.msie) { return $(td).outerWidth() - 1; }
+            if ($.browser.msie) { return $(td).outerWidth() }
             if ($.browser.mozilla) { return $(td).width(); }
             if ($.browser.safari) { return $(td).outerWidth(); }
             return $(td).outerWidth();
