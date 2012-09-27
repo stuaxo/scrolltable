@@ -69,9 +69,7 @@
 
             sizeHeaders();
 
-            window.onresize = function() {
-                sizeHeaders();
-            };
+            $(window).resize(sizeHeaders);
         }
 
         function getWidth(td) {
