@@ -1,6 +1,5 @@
 (function($) {
     function getScrollBarWidth () {
-        // http://www.alexandre-gomes.com/?p=115
         var inner = document.createElement('p');
         $(inner).css({
             width: '100%',
@@ -135,8 +134,8 @@
                 'border': 0
             });
 
-            var allBodyCols = table.find('tbody tr:first td');
             var sizeHeaders = function() {
+                var allBodyCols = table.find('tbody tr:first td');
                 // size the header columns to match the body
                 var headers = headTable.find('thead tr th');
                 headers.each(function(index) {
