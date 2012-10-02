@@ -118,7 +118,7 @@
             var bufferCol = $(document.createElement('th'))
                 .css({
                     'background': 'transparent',
-                    'border': 0
+                    'border': 0,
                     'width:': scrollbarWidth
                 })
                 .attr('width', scrollbarWidth + 'px')
