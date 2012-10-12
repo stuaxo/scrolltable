@@ -37,7 +37,8 @@
         var defaults = {
             width: '400px',
             height: '300px',
-            border: 'none'
+            border: 'none',
+            formatBufferCol: false
         };
         var options = $.extend(defaults, options);
 
@@ -124,6 +125,16 @@
                 .attr('width', scrollbarWidth + 'px')
                 .appendTo(headTable.find('thead tr'));
 
+            if (options.formatBufferCol) {
+                $.each(bufferCol, function(i, el) {
+                    //console.log($(col).css('background-color'));
+                    var $el = $(el);
+                    var $prevEl = $el.prev();
+                    $.each(['background', 'border-top', 'border-bottom'], function(i, cssProperty) {
+                        $el.css(cssProperty, $prevEl.css(cssProperty));
+                    });
+                });
+            }
 
 
             // remove the extra html
@@ -179,3 +190,4 @@
     };
 
 })(jQuery);
+

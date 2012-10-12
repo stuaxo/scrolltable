@@ -30,6 +30,12 @@ width of a scrollbar.
 
 
 
+formatBufferCell
+
+When set to true will set background, top and bottom borders of the buffer
+cell to the same as the preceeding cell (defaults to false).
+
+
 
 Troubleshooting:
 
