@@ -130,9 +130,14 @@
                     //console.log($(col).css('background-color'));
                     var $el = $(el);
                     var $prevEl = $el.prev();
-                    $.each(['background', 'background-color', 'background-image', 'border-top', 'border-bottom'], function(j, cssProperty) {
-                        $el.css(cssProperty, $prevEl.css(cssProperty));
+                    var cssProperties = {};
+                    $.each([
+                        'background', 'background-color', 'background-image',
+                        'border-top', 'border-top-style', 'border-top-color', 'border-top-width',
+                        'border-bottom', 'border-bottom-style', 'border-bottom-color', 'border-bottom-width'], function(j, cssProperty) {
+                        cssProperties[cssProperty] = $prevEl.css(cssProperty);
                     });
+                    $el.css(cssProperties);
                 });
             }
 
